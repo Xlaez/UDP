@@ -55,10 +55,20 @@ fn connect() -> std::io::Result<()> {
 
                     msgs.push(data.clone());
 
-                    let serialized_data =
-                        serde_json::to_string(&data).expect("Could not serialize response data");
+                    if string_data == "quit" {
+                        break;
+                    }
 
-                    socket.send_to(&serialized_data.as_bytes(), &src)?;
+                    if string_data == "my_data" {
+                        let serialized_data =
+                            serde_json::to_vec(&msgs).expect("Could not serialize response data");
+                        socket.send_to(&serialized_data, src)?;
+                    } else {
+                        let serialized_data = serde_json::to_string(&data)
+                            .expect("Could not serialize response data");
+                        socket.send_to(&serialized_data.as_bytes(), &src)?;
+                    }
+
                     println!("Sent response back to {}", src);
                 }
                 Err(e) => {

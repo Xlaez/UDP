@@ -1,6 +1,7 @@
 ## The App
 
 When you start the server, it waits for connection from a client. When you start the client, it binds to a random port on your local  address `127.0.0.1.0`. Start the both servers on different terminals.
+To quit and stop the client, you should send `quit`, if you want to get a list(array/slice) of the data you have been sending so far, send the text `my_data`.
 
 ## CLIENT
 

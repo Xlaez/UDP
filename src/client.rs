@@ -14,14 +14,14 @@ fn main() -> std::io::Result<()> {
 
         let message = input.trim();
 
-        if message == "quit" {
-            break;
-        }
-
         socket.send_to(message.as_bytes(), "127.0.0.1:34254")?;
         println!("Sent message: {}", message);
 
         let mut buf = [0u8; 1024];
+
+        if message == "quit" {
+            break;
+        }
 
         let (amt, _) = socket.recv_from(&mut buf)?;
         println!(
