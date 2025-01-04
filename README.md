@@ -1,3 +1,7 @@
+## The App
+
+When you start the server, it waits for connection from a client. When you start the client, it binds to a random port on your local  address `127.0.0.1.0`. Start the both servers on different terminals.
+
 ## CLIENT
 
 To start the client, call the command below:
