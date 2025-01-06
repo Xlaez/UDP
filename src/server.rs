@@ -33,8 +33,8 @@ fn connect() -> std::io::Result<()> {
 
         let mut msgs: Vec<Msg> = Vec::with_capacity(50);
 
-        // Receives a single datagram message on the socket. If `buf` is too small to hold the message, it will be cut off.
         loop {
+            // Receives a single datagram message on the socket. If `buf` is too small to hold the message, it will be cut off.
             let mut buf = [0u8; 1024];
 
             match socket.recv_from(&mut buf) {
